@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: PHP Version
+Plugin Name: PHP Server Info
 Plugin URI: http://catn.com
 Description: Plugin to display PHP Info from Admin Menu.
 Author: Ray Viljoen
