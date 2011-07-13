@@ -14,15 +14,18 @@ function php_info() {
 function php_admin_info() {
     if (!current_user_can('manage_options'))
     {wp_die( __('You do not have sufficient permissions to access this page.') );}
-$pluginPath = get_bloginfo('url');
-$phpStyle = <<<PHPSTYLE
+    
+    // SET PLUGIN PATH REGARDLESS OF CONTAINING DIRECTORY
+	$plug_path = plugins_url(  '/', __FILE__ );
+    
+	$phpStyle = <<<PHPSTYLE
 	<style type="text/css">
 	#php-info-wrapper { padding: 20px; }
 	#php-info-wrapper table { padding: 1px; background: #ccc; border: 1px #777 solid; -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; }
 	#php-info-wrapper td, th {padding:3px; background:#efefef; -webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
 	#php-info-wrapper tr.h img { display:none; }
 	#php-info-wrapper tr.h td{ background:none; }
-	#php-info-wrapper tr.h { text-align:right;  height: 130px; background: url($pluginPath/wp-content/plugins/php-info/php-logo.png) no-repeat 30px center; }
+	#php-info-wrapper tr.h { text-align:right;  height: 130px; background: url({$plug_path}php-logo.png) no-repeat 30px center; }
 	#php-info-wrapper tr.h h1{ padding-right:50px; }
 	</style>
 PHPSTYLE;
